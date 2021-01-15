@@ -56,7 +56,7 @@ def load_checkpoint(checkpoint, models, optimizers=None, scheduler=None, best_me
     """
 
     if not os.path.exists(checkpoint):
-        raise('File does not exist {}'.format(checkpoint))
+        raise Exception('File does not exist {}'.format(checkpoint))
 
     checkpoint = torch.load(checkpoint, map_location=map_location)
     models = [m.load_state_dict(checkpoint['model_state_dicts'][i]) for i, m in enumerate(models)]
